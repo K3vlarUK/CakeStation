@@ -26,8 +26,8 @@ public class Cake {
     public Cake(String name, String comment, String url, Integer yumfactor) {
         this.name = name;
         this.comment = comment;
-        this.imageURL = url;
-        this.yumFactor = yumfactor;
+        this.url = url;
+        this.yumfactor = yumfactor;
     }
 
     public Cake() {
