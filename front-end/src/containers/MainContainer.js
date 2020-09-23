@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Request from "../helpers/request";
-import CakeContainer from './CakeContainer';
+import CreateCakeContainer from "./CreateCakeContainer";
+import MyCakesContainer from './MyCakesContainer';
+import Request from '../helpers/request';
+import CakeList from '../components/CakeList';
 
 class MainContainer extends Component {
     constructor(props) {
@@ -12,9 +14,8 @@ class MainContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/cakes')
-        .then(response => response.json())
-        .then((data) => {
+        const request = new Request();
+        request.get('/cakes').then((data) => {
             this.setState({
                 cakes: data
             })
@@ -27,17 +28,13 @@ class MainContainer extends Component {
                 <div className="main-container">
                     <Router>
                         <Switch>
-                            <Route exact path="/" component={CakeContainer}/>
-                            <Route path="/cakeList" />
+                            <Route exact path="/cakes" render={(props) => {
+                                return <CakeList cakes={this.state.cakes} />
+                            }}/>
+                            <Route path="/cakes/mine" component={MyCakesContainer} />
+                            <Route path="/cakes/new" component={CreateCakeContainer} />
                         </Switch>
                     </Router>
-                    <div className="test-layout">
-                        {this.state.cakes.map((cake, index) => {
-                            return (
-                        <h2>{ cake.name }</h2>
-                            )
-                        })}
-                    </div>
                 </div>
             </Fragment>
          );

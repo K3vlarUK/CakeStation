@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CakeContainer extends Component {
+class MyCakesContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -8,12 +8,10 @@ class CakeContainer extends Component {
     render() { 
         return ( 
             <div>
-                <h1>Cakes</h1>
-                <a href="/">Home</a>
-                <a href="/cakeList">My Cakes</a>
+                <h2>My Favourite Cakes</h2>
             </div>
          );
     }
 }
  
-export default CakeContainer;
+export default MyCakesContainer;
