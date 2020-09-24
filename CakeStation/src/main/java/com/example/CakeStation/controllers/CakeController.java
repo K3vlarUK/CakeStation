@@ -10,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/cakes")
 public class CakeController {
     @Autowired
@@ -29,7 +28,7 @@ public class CakeController {
         return cakeRepository.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping(value = "/{id}")
     public Optional<Cake> getCake(@PathVariable Integer id){
         return cakeRepository.findById(id);
     }
@@ -39,7 +38,13 @@ public class CakeController {
         return cakeRepository.save(newCake);
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping(value = "/{id}")
+    public void updatenewCake(@PathVariable Integer id){
+        Cake cake = cakeRepository.getOne(id);
+        cakeRepository.save(cake);
+    }
+
+    @DeleteMapping(value = "/{id}")
     public void deleteCake(@PathVariable Integer id) {
         cakeRepository.deleteById(id);
     }

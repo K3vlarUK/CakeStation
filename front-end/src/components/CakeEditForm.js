@@ -1,6 +1,10 @@
 import React from 'react';
 
-const CakeForm = (props) => {
+const CakeEditForm = (props) => {
+
+    if(!props.cake){
+        return "Loading..."
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -10,21 +14,21 @@ const CakeForm = (props) => {
             "url": event.target.url.value,
             "yumfactor": event.target.yumFactor.value
         }
-        props.handleCakePost(cake);
+        props.handleCakeUpdate(cake);
     }
 
     return ( 
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Cake Name" name="cakeName"/>
-                <input type="text" placeholder="Add a Comment" name="comment"/>
-                <input type="url" placeholder="Url of cake image" name="url"/>
+                <input type="text" name="cakeName" defaultValue={props.cake.name} />
+                <input type="text" name="comment" defaultValue={props.cake.comment} />
+                <input type="url" name="url" defaultValue={props.cake.url} />
                 <label htmlFor="yumFactor">The Yum Factor(between 0 and 10)</label>
-                <input type="range" min="0" max="10" id="yumFactor" name="yumFactor" />
+                <input type="range" min="0" max="10" id="yumFactor" name="yumFactor"defaultValue={props.cake.yumfactor} />
                 <button type="submit">Save</button>
             </form>
         </div>
-    );
+     );
 }
  
-export default CakeForm;
+export default CakeEditForm;
