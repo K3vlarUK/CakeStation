@@ -5,7 +5,7 @@ const CakeList = (props) => {
 
     const cakes = props.cakes.map((cake, index) => {
         return(
-            <li key={index} className="component-item">
+        <li key={index} className="component-item">
             <div className="component">
                 <Cake cake={cake} />
             </div>

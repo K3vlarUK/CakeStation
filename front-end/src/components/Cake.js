@@ -11,10 +11,11 @@ const Cake = ({cake}) => {
 
     return ( 
         <Fragment>
+            <img src={cake.url} alt={cake.name} />
             <Link to={url} className="name"><h4>{cake.name}</h4></Link>
+            <p><strong><i>Comments:</i></strong></p>
             <p>{cake.comment}</p>
-            <p>{cake.url}</p>
-            <p>{cake.yumfactor}</p>
+            <p><strong><i>Yum Factor:</i></strong> {cake.yumfactor}</p>
         </Fragment>
      );
 }

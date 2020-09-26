@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class MyCakesContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
     }
+
     render() { 
         return ( 
             <div>

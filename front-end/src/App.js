@@ -6,11 +6,14 @@ function App() {
   return (
     <div className="App">
       <div className="main">
-        <a href="/"><h1>CakeStation</h1></a>
-        <hr />
-        <a href="/cakes">View all Cakes</a>
-        <a href="/cakes/mine">View Your Cakes</a>
-        <a href="/cakes/new">Add your own Cake</a>
+      <div className="header">
+        <a href="/" className="logo">CakeStation</a>
+        <div className="header-right">
+          <a href="/cakes">View all Cakes</a>
+          <a href="/cakes/mine">View Your Cakes</a>
+          <a href="/cakes/new">Add your own Cake</a>
+        </div>
+      </div>
         <MainContainer />
       </div>
     </div>

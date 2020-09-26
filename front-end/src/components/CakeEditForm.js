@@ -19,12 +19,18 @@ const CakeEditForm = (props) => {
 
     return ( 
         <div>
+            <h3>Edit one of the cakes</h3>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="cakeName" defaultValue={props.cake.name} />
+                <br />
                 <input type="text" name="comment" defaultValue={props.cake.comment} />
+                <br />
                 <input type="url" name="url" defaultValue={props.cake.url} />
+                <br />
                 <label htmlFor="yumFactor">The Yum Factor(between 0 and 10)</label>
-                <input type="range" min="0" max="10" id="yumFactor" name="yumFactor"defaultValue={props.cake.yumfactor} />
+                <br />
+                <input type="number" min="0" max="10" id="yumFactor" name="yumFactor"defaultValue={props.cake.yumfactor} />
+                <br />
                 <button type="submit">Save</button>
             </form>
         </div>
