@@ -7,7 +7,6 @@ import com.example.CakeStation.models.Cake;
 import com.example.CakeStation.repositories.CakeRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -39,9 +38,9 @@ public class CakeController {
     }
 
     @PutMapping(value = "/{id}")
-    public void updatenewCake(@PathVariable Integer id){
-        Cake cake = cakeRepository.getOne(id);
-        cakeRepository.save(cake);
+    public Cake updatenewCake(@RequestBody Cake cake, @PathVariable Integer id){
+        cake.setId(id);
+        return cakeRepository.save(cake);
     }
 
     @DeleteMapping(value = "/{id}")
